@@ -71,11 +71,24 @@ fun mergeSort(array: IntArray): IntArray{
 
     return merge(leftArray, rightArray)
 }
+fun checkedInputString(input: String?){
+    if (input.isNullOrBlank()){
+        throw Exception("Invalid input")
+    }
+    println("Input is valid")
+}
 
 fun main(args: Array<String>) {
-    var array = intArrayOf(1, 0, 4, 9, 2, 7)
-    array.forEach{print(it)}
-    println()
-    val mergedArray = mergeSort(array)
-    mergedArray.forEach { print(it) }
+    val input = readLine()
+    try {
+        checkedInputString(input)
+        val array = input!!.split(' ').map { it.toInt() }.toIntArray()
+        val mergedArray = mergeSort(array)
+        mergedArray.forEach { print(" $it") }
+        println()
+    } catch (e: Exception) {
+        println(e.message)
+    } finally {
+        println("Program has been finished")
+    }
 }
