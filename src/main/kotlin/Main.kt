@@ -1,7 +1,81 @@
-fun main(args: Array<String>) {
-    println("Hello World!")
+//n = 6 n % 4 + 1 = 2 + 1 = 3
+/*
+3. Сортировка слиянием
+Сортировка слиянием также построена на принципе "разделяй-и-властвуй", однако
+реализует его несколько по-другому, нежели quickSort. А именно, вместо разделения по
+опорному элементу массив просто делится пополам.
 
-    // Try adding program arguments via Run/Debug configuration.
-    // Learn more about running applications: https://www.jetbrains.com/help/idea/running-applications.html.
-    println("Program arguments: ${args.joinToString()}")
+Массив разделён до последовательностей длины один
+
+Слияние до упорядоченных пар
+
+Слияние пар в упорядоченные четвёрки
+
+Слияние четвёрок в общий массив
+
+Рекурсивный алгоритм обходит получившееся дерево слияния в прямом порядке. Каждый
+уровень представляет собой проход сортировки слияния - операцию, полностью
+переписывающую массив.
+ */
+
+fun merge(leftArray: IntArray, rightArray: IntArray):IntArray{
+    var i: Int = 0
+    var j: Int = 0
+    var k: Int = 0
+
+    val result: IntArray = IntArray(leftArray.size + rightArray.size)
+
+    while(i < leftArray.size && j < rightArray.size){
+        if(leftArray[i] < rightArray[j]){
+            result[k] = leftArray[i]
+            k++
+            i++
+        } else {
+            result[k] = rightArray[j]
+            k++
+            j++
+        }
+    }
+
+    while(i < leftArray.size){
+        result[k] = leftArray[i]
+        i++
+        k++
+    }
+
+    while(j < rightArray.size){
+        result[k] = rightArray[j]
+        j++
+        k++
+    }
+
+    return result;
+}
+
+fun mergeSort(array: IntArray): IntArray{
+    if(array.size <= 1) {
+        return array;
+    }
+
+    val middle: Int = array.size / 2
+    var leftArray: IntArray = array.copyOfRange(0, middle)
+    var rightArray: IntArray = array.copyOfRange(middle, array.size)
+
+ /*   leftArray.forEach { print(it) }
+    print(" ")
+    rightArray.forEach { print(it) }
+    println()
+*/
+    leftArray = mergeSort(leftArray)
+    rightArray = mergeSort(rightArray)
+
+    return merge(leftArray, rightArray)
+}
+
+fun main(args: Array<String>) {
+    var array = intArrayOf(1, 0, 4, 9, 2, 7)
+    array.forEach{print(it)}
+    println()
+    val mergedArray = mergeSort(array)
+    mergedArray.forEach { print(it) }
 }
