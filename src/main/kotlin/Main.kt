@@ -86,12 +86,11 @@ class Node(var data: Int, private var leftChild: Node ?= null, private var right
     }
 }
 
-fun checkedInputString(input: String?): String {
+fun checkedInputString(input: String?){
     if (input.isNullOrBlank()){
         throw Exception("Invalid input")
     }
     println("Input is valid")
-    return input
 }
 
 fun main() {
