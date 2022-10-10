@@ -1,4 +1,5 @@
 import kotlin.math.max
+import kotlin.system.exitProcess
 
 //n = 6; 4 + n % 12 + 1 = 4 + 6 + 1 = 11
 
@@ -85,15 +86,28 @@ class Node(var data: Int, private var leftChild: Node ?= null, private var right
     }
 }
 
+fun checkedInputString(input: String?): String {
+    if (input.isNullOrBlank()){
+        throw Exception("Invalid input")
+    }
+    println("Input is valid")
+    return input
+}
 
 fun main() {
-    val array = (readLine()!!.split(' ').map { it.toInt() }).toIntArray()
-   // val array = intArrayOf(1, 3, 5, 2, 8, 7, 7, 0)
-    val tree2 = Node(array)
-    tree2.preOrder()
-    println()
-    tree2.postOrder()
-    println()
-    println((tree2.findSecondMax(tree2)).data)
-
+    val input = readLine()
+    try {
+        checkedInputString(input)
+        val array = input!!.split(' ').map { it.toInt() }.toIntArray()
+        val tree = Node(array)
+        tree.preOrder()
+        println()
+        tree.postOrder()
+        println()
+        println("SecondMax = ${(tree.findSecondMax(tree)).data}")
+    } catch (e: Exception) {
+        println(e.message)
+    } finally {
+        println("Program has been finished")
+    }
 }

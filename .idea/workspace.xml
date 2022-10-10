@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fb221833-6aca-437f-87d8-659937f513e6" name="Changes" comment="Создание бинарного дерева поиска и поиск второго по величине элемента">
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+    <list default="true" id="fb221833-6aca-437f-87d8-659937f513e6" name="Changes" comment="Поиск второго по величине элемента, версия 2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
     </list>
@@ -67,7 +65,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665424980614</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Поиск второго по величине элемента, версия 2">
+      <created>1665438537425</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1665438537426</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -84,6 +89,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Выполение сортировки слиянием" />
     <MESSAGE value="Создание бинарного дерева поиска и поиск второго по величине элемента" />
-    <option name="LAST_COMMIT_MESSAGE" value="Создание бинарного дерева поиска и поиск второго по величине элемента" />
+    <MESSAGE value="Поиск второго по величине элемента, версия 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Поиск второго по величине элемента, версия 2" />
   </component>
 </project>
