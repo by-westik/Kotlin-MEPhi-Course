@@ -1,5 +1,4 @@
-import kotlin.math.max
-import kotlin.system.exitProcess
+import kotlin.math.min
 
 //n = 6; 4 + n % 12 + 1 = 4 + 6 + 1 = 11
 
@@ -82,6 +81,10 @@ class Node(var data: Int, private var leftChild: Node ?= null, private var right
             return node
         }
 
+        if(node.rightChild == null && node.leftChild == null) {
+            return node
+        }
+
         return findSecondMax(node.rightChild!!)
     }
 }
@@ -103,7 +106,8 @@ fun main() {
         println()
         tree.postOrder()
         println()
-        println("SecondMax = ${(tree.findSecondMax(tree)).data}")
+        println((tree.findSecondMax(tree)).data)
+
     } catch (e: Exception) {
         println(e.message)
     } finally {
