@@ -13,9 +13,9 @@ import kotlin.math.max
 Выведите второй по величине элемент в построенном дереве.
  */
 
-class Node(private var data: Int, private var leftChild: Node ?= null, private var rightChild: Node ?= null) {
+class Node(var data: Int, private var leftChild: Node ?= null, private var rightChild: Node ?= null) {
 
-    constructor (array: Array<Int>) : this(array[0]){
+    constructor (array: IntArray) : this(array[0]){
         for (i in 1 until array.size - 1) {
             this.insert(array[i])
         }
@@ -45,24 +45,55 @@ class Node(private var data: Int, private var leftChild: Node ?= null, private v
         leftChild?.postOrder()
     }
 
-    fun findSecondMax(): Int {
+ /*   fun findMax(node: Node): Node{
+        if (this.rightChild != null) {
+            val rightChild = this.rightChild
+            return findMax(rightChild)
+        }
+        return node
+    }*/
+
+    fun findMax(node: Node): Node{
+        var currentNode = node
+        while(currentNode.rightChild != null){
+            currentNode = node.rightChild!!
+        }
+        return currentNode
+    }
+ /*   fun findSecondMax(): Int {
         var maxValueNode: Node = this
         var previousMaxValue: Node = this
         while(maxValueNode.rightChild != null) {
             previousMaxValue = maxValueNode
             maxValueNode = maxValueNode.rightChild!!
-
+// (1, 3, 5, 2, 8, 7, 7, 0) не работает
         }
         return previousMaxValue.data
+    }*/
+
+    fun findSecondMax(node: Node): Node{
+        if (node.rightChild == null && node.leftChild != null) {
+            val leftChild: Node = node.leftChild!!
+            return findMax(leftChild)
+        }
+
+        if(node.rightChild != null && node.rightChild?.leftChild == null && node.rightChild?.rightChild == null) {
+            return node
+        }
+
+        return findSecondMax(node.rightChild!!)
     }
 }
 
+
 fun main() {
-    val arrayTree = arrayOf(3, 4, 5, 3, 1, 0)
-    val tree2 = Node(arrayTree)
+    val array = (readLine()!!.split(' ').map { it.toInt() }).toIntArray()
+   // val array = intArrayOf(1, 3, 5, 2, 8, 7, 7, 0)
+    val tree2 = Node(array)
     tree2.preOrder()
     println()
     tree2.postOrder()
     println()
-    println(tree2.findSecondMax())
+    println((tree2.findSecondMax(tree2)).data)
+
 }
